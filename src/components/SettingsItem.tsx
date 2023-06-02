@@ -104,13 +104,13 @@ const SettingItem = () => {
         id: `menuItem${treeItems.length + 1}`,
         title: form.title,
       });
+    } else {
+      const rootItem = newTreeItems.find((item) => item.title === form.rootId);
+      rootItem?.items?.push({
+        id: `menuItem_sub_${treeItems.length + 1}`,
+        title: form.title,
+      });
     }
-
-    const rootItem = newTreeItems.find((item) => item.title === form.rootId);
-    rootItem?.items?.push({
-      id: `menuItem_sub_${treeItems.length + 1}`,
-      title: form.title,
-    });
 
     setTreeItems(newTreeItems);
     setForm(DEFAULT_FORM);
